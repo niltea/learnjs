@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "browser-sync": "^2.23.6"
+  },
+  "name": "learnjs",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:niltea/learnjs.git",
+  "author": "niltea <futurabodoni@gmail.com>",
+  "scripts": {
+    "start": "browser-sync start --server --files='**/*.*'"
+  }
+}
