@@ -4,11 +4,11 @@ function loadFixture(path) {
   let html = null;
   jQuery.ajax({
     url: '../index.html',
-    success: function(result) {
+    success(result) {
       html = result;
     },
-    async: false
-  });          
+    async: false,
+  });
   return $.parseHTML(html);
 }
 
@@ -23,6 +23,6 @@ function resetFixture() {
   }
 }
 
-beforeEach(function () {
+beforeEach(() => {
   resetFixture();
 });
