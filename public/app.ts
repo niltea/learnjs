@@ -1,8 +1,20 @@
 'use strict';
 const learnjs = new class Learnjs {
   constructor () {}
+
+  problemView (hash) {
+    return $('<div class="problem-view">').text('Coming soon!');
+  }
+
   showView (hash) {
-    const problemView = $('<div class="problem-view">').text('Coming soon!');
-    $('.view-container').empty().append(problemView);
+    const routes = {
+      '#problem-1': learnjs.problemView,
+    };
+    const viewFn = routes[hash];
+
+    if(viewFn) {
+      $('.view-container').empty().append(viewFn());
+    }
+
   }
 };
