@@ -1,7 +1,7 @@
-var fixture;
+let fixture = null;
 
 function loadFixture(path) {
-  var html;
+  let html = null;
   jQuery.ajax({
     url: '../index.html',
     success: function(result) {
@@ -14,8 +14,8 @@ function loadFixture(path) {
 
 function resetFixture() {
   if (!fixture) {
-    var index = $('<div>').append(loadFixture('/index.html'));
-    var markup = index.find('div.markup');
+    const index = $('<div>').append(loadFixture('/index.html'));
+    const markup = index.find('div.markup');
     fixture = $('<div class="fixture" style="display: none">').append(markup);
     $('body').append(fixture.clone());
   } else {
