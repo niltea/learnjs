@@ -1,7 +1,20 @@
 'use strict';
-
+interface problem {
+  description: string;
+  code       : string;
+}
 class Learnjs {
   public template: HTMLElement = null;
+  public problems = [
+    {
+      description: 'What is truth?',
+      code: 'function problem() { return __; }',
+    },
+    {
+      description: 'Simple Math',
+      code: 'function problem() { return 42 === 6 * __; }',
+    },
+  ];
 
   constructor() {
   }

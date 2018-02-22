@@ -2,6 +2,16 @@
 class Learnjs {
     constructor() {
         this.template = null;
+        this.problems = [
+            {
+                description: 'What is truth?',
+                code: 'function problem() { return __; }',
+            },
+            {
+                description: 'Simple Math',
+                code: 'function problem() { return 42 === 6 * __; }',
+            },
+        ];
     }
     problemView(problemNumber) {
         const view = this.template.querySelector('.problem-view').cloneNode(true);
