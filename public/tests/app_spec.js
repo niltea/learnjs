@@ -35,4 +35,10 @@ describe('problem view', () => {
   it('has a title that includes the problem number', () => {
     expect(view.find('.title').text()).toEqual('Problem #1 Coming soon!');
   });
+  it('shows the description', () => {
+    expect(view.find('[data-name="description"]').text()).toEqual('What is truth?');
+  });
+  it('shows the problem code', () => {
+    expect(view.find('[data-name="code"]').text()).toEqual('function problem() { return __; }');
+  });
 });
