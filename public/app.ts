@@ -7,11 +7,11 @@ class Learnjs {
     return $('<div class="problem-view">').text(`Problem #${problemNumber} Coming soon!`);
   }
 
-  public static showView(hash) {
+  public static showView(hash): void {
     const routes = {
       '#problem': Learnjs.problemView,
     };
-    const hashParts = hash.split('-');
+    const hashParts: string[] = hash.split('-');
     const viewFn = routes[hashParts[0]];
 
     if (viewFn) {
