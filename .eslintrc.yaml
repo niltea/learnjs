@@ -5,6 +5,7 @@ env:
   jasmine: true
   jquery: true
 globals:
+  Learnjs: true
   learnjs: true
 extends: 'airbnb-base'
 parserOptions:

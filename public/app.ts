@@ -1,20 +1,32 @@
 'use strict';
-const learnjs = new class Learnjs {
-  constructor () {}
-
-  problemView (hash) {
-    return $('<div class="problem-view">').text('Coming soon!');
+class Learnjs {
+  constructor() {
   }
 
-  showView (hash) {
+  public static problemView(problemNumber):JQuery {
+    return $('<div class="problem-view">').text(`Problem #${problemNumber} Coming soon!`);
+  }
+
+  public static showView(hash) {
     const routes = {
-      '#problem-1': learnjs.problemView,
+      '#problem': Learnjs.problemView,
     };
-    const viewFn = routes[hash];
+    const hashParts = hash.split('-');
+    const viewFn = routes[hashParts[0]];
 
-    if(viewFn) {
-      $('.view-container').empty().append(viewFn());
+    if (viewFn) {
+      $('.view-container').empty().append(viewFn(hashParts[1]));
     }
-
   }
-};
+
+  appOnReady() {
+    Learnjs.showView(window.location.hash);
+
+    window.addEventListener('hashchange', (e) => {
+      e.preventDefault();
+      Learnjs.showView(window.location.hash);
+    });
+  }
+}
+
+const learnjs = new Learnjs();
