@@ -1,25 +1,30 @@
 'use strict';
 class Learnjs {
     constructor() {
+        this.template = null;
     }
-    static problemView(problemNumber) {
-        return $('<div class="problem-view">').text(`Problem #${problemNumber} Coming soon!`);
+    problemView(problemNumber) {
+        const view = this.template.querySelector('.problem-view').cloneNode(true);
+        view.querySelector('.title').textContent = `Problem #${problemNumber} Coming soon!`;
+        return view;
     }
-    static showView(hash) {
+    showView(hash) {
         const routes = {
-            '#problem': Learnjs.problemView,
+            '#problem': this.problemView,
         };
         const hashParts = hash.split('-');
         const viewFn = routes[hashParts[0]];
         if (viewFn) {
-            $('.view-container').empty().append(viewFn(hashParts[1]));
+            $('.view-container').empty().append(viewFn.call(this, hashParts[1]));
         }
     }
     appOnReady() {
-        Learnjs.showView(window.location.hash);
+        const self = this;
+        this.template = document.querySelector('.templates');
+        this.showView(window.location.hash);
         window.addEventListener('hashchange', (e) => {
             e.preventDefault();
-            Learnjs.showView(window.location.hash);
+            this.showView.call(self, window.location.hash);
         });
     }
 }
